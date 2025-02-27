@@ -1,7 +1,9 @@
+import os
 from fastapi import FastAPI, Body
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from typing import Optional
+from transformers import pipeline
 
 # Define request model with Pydantic
 class CodeRequest(BaseModel):
@@ -15,10 +17,14 @@ class AnalysisResponse(BaseModel):
 
 app = FastAPI()
 
+
+# Get allowed origins from environment or use defaults
+allowed_origins = os.environ.get("ALLOWED_ORIGINS", "http://localhost:3000").split(",")
+
 # Add CORS middleware
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000"], # React's port
+    allow_origins=allowed_origins, # React's port
     allow_credentials=True,
     allow_methods=["*"],  # Allows all methods
     allow_headers=["*"],  # Allows all headers
@@ -45,4 +51,4 @@ def analyze_code(request: CodeRequest):
 # Add this if you want to run it directly with Python
 if __name__ == '__main__':
     import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    uvicorn.run(app, host="0.0.0.0", port=8080)

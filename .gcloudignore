@@ -1,0 +1,26 @@
+.git
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.db
+*.sqlite3
+# Ignore the virtual environment directory
+venv/
+
+# Ignore Python bytecode files
+*.py[cod]
+
+# Ignore environment variables file
+.env
+
+# Ignore distribution / packaging files
+*.egg-info/
+*.egg
+*.whl
+dist/
+build/
+
+# Ignore system files
+.DS_Store

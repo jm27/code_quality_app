@@ -1,0 +1,19 @@
+# Ignore the virtual environment directory
+venv/
+
+# Ignore Python bytecode files
+__pycache__/
+*.py[cod]
+
+# Ignore environment variables file
+.env
+
+# Ignore distribution / packaging files
+*.egg-info/
+*.egg
+*.whl
+dist/
+build/
+
+# Ignore system files
+.DS_Store
